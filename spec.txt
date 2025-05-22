@@ -4,10 +4,12 @@ acc based
 
 insts:
 
-0 - const x     - acc = x
-1 - add mem[x]  - acc += mem[x]
-2 - sub mem[x]  - acc -= mem[x]
-3 - load mem[x] - acc = mem[x]
-4 - save mem[x] - mem[x] = acc
+0 - const x      - acc = x
+1 - add mem[x]   - acc += mem[x]
+2 - sub mem[x]   - acc -= mem[x]
+3 - load mem[x]  - acc = mem[x]
+4 - store mem[x] - mem[x] = acc
 
+5 - print        - print(acc)
 
+f - halt
