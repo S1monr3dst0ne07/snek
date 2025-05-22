@@ -45,6 +45,9 @@ while pc < len(cmds):
         case 'store': mem[arg] = acc
         case 'print': print(acc)
         case 'jump' : pc = arg
+        case 'branch':
+            if acc == 0:
+                pc = arg
         case 'halt' : break
 
 
