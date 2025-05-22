@@ -13,5 +13,7 @@ insts:
 5 - print        - print(acc)
 
 6 - jump x       - pc = x
+7 - branch x     - acc == 0 ? pc = x
+
 
 f - halt
