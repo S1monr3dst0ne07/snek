@@ -19,13 +19,23 @@ pc = 0
 acc = 0
 mem = [0 for x in range(16)]
 
+labs = {}
+for index, cmd in enumerate(cmds):
+    inst, arg = cmd
+
+    if (inst == 'label'):
+        labs[arg] = index
+
 
 while pc < len(cmds):
     inst, arg = cmds[pc]
     pc += 1
 
-    if arg and arg.isdigit():
-        arg = int(arg)
+    if arg:
+        if arg.isdigit():
+            arg = int(arg)
+        else:
+            arg = labs[arg]
 
     match inst.lower():
         case 'const': acc = arg
