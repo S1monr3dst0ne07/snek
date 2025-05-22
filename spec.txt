@@ -1,0 +1,13 @@
+4 bit
+acc based
+
+
+insts:
+
+0 - const x     - acc = x
+1 - add mem[x]  - acc += mem[x]
+2 - sub mem[x]  - acc -= mem[x]
+3 - load mem[x] - acc = mem[x]
+4 - save mem[x] - mem[x] = acc
+
+
