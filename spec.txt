@@ -12,4 +12,6 @@ insts:
 
 5 - print        - print(acc)
 
+6 - jump x       - pc = x
+
 f - halt
