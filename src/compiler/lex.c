@@ -62,14 +62,18 @@ token_t lex(char* src_path)
 
     char c;
     uint32_t line = 1;
+    bool string = false;
     while ((c = fgetc(f)) != EOF)
     {
         type = get_token_type(c);
 
+        if (state == TOKEN_TYPE_QUOTE)
+            string = !string;
+
         if (type == TOKEN_TYPE_NEWLINE)
             line++;
 
-        if (state == type && type != TOKEN_TYPE_SYM)
+        if ((state == type && type != TOKEN_TYPE_SYM) || string)
             *ptr++ = c;
 
         else
@@ -79,8 +83,8 @@ token_t lex(char* src_path)
 
             //capture token
             if (
-                state != TOKEN_TYPE_NEWLINE && 
-                state != TOKEN_TYPE_SPACE && 
+                //state != TOKEN_TYPE_NEWLINE && 
+                //state != TOKEN_TYPE_SPACE && 
                 state != TOKEN_TYPE_INVALID
             ) //filter token capture
             {
