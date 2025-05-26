@@ -6,6 +6,7 @@ import typing
 
 import lex        
 import tree
+import manifold
 
 
 
@@ -16,7 +17,9 @@ def main():
         sys.exit(1)
     
     stream = lex.tokenize(sys.argv[1])
-    tree.parse_scope(stream)
+    structure = manifold.structurize(stream)
+    print(structure)
+    #tree.parse_scope(stream)
 
 
 
