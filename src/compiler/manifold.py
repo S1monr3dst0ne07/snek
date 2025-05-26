@@ -9,7 +9,7 @@ import river
 @dataclass
 class line:
     content : river.streamer = field(default_factory = lambda: river.streamer())
-    scope_depth : int = 0
+    scope : int = 0
 
 
 def structurize(token_stream):
@@ -23,7 +23,7 @@ def structurize(token_stream):
                     line_stream.add(line_buffer)
                 line_buffer = line()
             case 'space':
-                line_buffer.scope_depth = token.size // 4
+                line_buffer.scope = token.size // 4
             case _:
                 line_buffer.content.add(token)
 
