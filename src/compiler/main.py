@@ -5,6 +5,7 @@ from dataclasses import field
 import typing
 
 import lex        
+import tree
 
 
 
@@ -14,7 +15,8 @@ def main():
         print("no file provided\n")
         sys.exit(1)
     
-    lex.tokenize(sys.argv[1])
+    stream = lex.tokenize(sys.argv[1])
+    tree.parse_scope(stream)
 
 
 

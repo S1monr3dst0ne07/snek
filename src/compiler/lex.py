@@ -2,19 +2,13 @@
 from dataclasses import dataclass
 from dataclasses import field
 
+import river
+
 @dataclass
 class token:
     content : str = ''
     kind : str = ''
-
-@dataclass
-class streamer:
-    iterator : list[token] = field(default_factory = lambda: [])
-
-    def add(self, token):
-        print(token)
-        self.iterator.append(token)
-
+    size : int = 0
 
 def get_kind(c):
     match c:
@@ -34,7 +28,7 @@ def tokenize(path):
     with open(path, "r") as f:
         src = f.read()
         
-    stream = streamer() 
+    stream = river.streamer() 
     buffer = []
     state = None
     string = False
@@ -49,10 +43,12 @@ def tokenize(path):
                 stream.add(token(
                     content = "".join(buffer), 
                     kind = state,
+                    size = len(buffer),
                 ))
                 buffer = []
 
         buffer.append(char)
         state = kind
 
-    return streamer
+    print(stream)
+    return stream
